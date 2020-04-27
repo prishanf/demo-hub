@@ -1,0 +1,49 @@
+<template>
+    <div>
+        <lightning-accordion class="example-accordion" allow-multiple-sections-open active-section-name="B">
+            <lightning-accordion-section name="B" label="Quick Order">
+                <p class="slds-m-bottom_small">This is the content area for section B.</p>
+
+                <template for:each={orderItems} for:item="item">
+                    <fieldset key={item.key} class="slds-form-element slds-form-element_compound">
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__row">
+                                <div class="slds-size_2-of-3">
+                                    <div class="slds-form-element">
+                                        <div class="slds-form-element__control">
+                                            <input type="type" name={item.name} onchange={onInputValueChange}
+                                                class="slds-input" data-row={item.key} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-size_1-of-3">
+                                    <div class="slds-form-element">
+                                        <div class="slds-form-element__control">
+                                            <input type="number" name={item.quantity} class="slds-input"
+                                                onchange={onInputValueChange} data-row={item.key} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </template>
+                <br/>
+                <div class="slds-form-element__control">
+                    <lightning-button variant="brand" label="ADD TO CART" title="" onclick={handleClick}>
+                    </lightning-button>
+                    <lightning-button variant="brand-outline" label="ADD MORE" title="ADD MORE" onclick={handleAddMore}
+                        class="slds-m-left_x-small"></lightning-button>
+
+                </div>
+                <div class="slds-form-element__control">
+                    <lightning-file-upload label="CSV Upload" name="fileUploader" accept={acceptedFormats}
+                        record-id={myRecordId} onuploadfinished={handleUploadFinished} multiple>
+                    </lightning-file-upload>
+                </div>
+
+            </lightning-accordion-section>
+
+        </lightning-accordion>
+    </div>
+</template>
