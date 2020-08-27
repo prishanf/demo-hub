@@ -1,5 +1,20 @@
 {
   "orgName": "prishan.fernando company",
   "edition": "Developer",
-  "features": []
+  "features": [
+    "Communities"
+  ],
+  "settings": {
+    "orgPreferenceSettings": {
+      "networksEnabled": true,
+      "s1DesktopEnabled": true,
+      "chatterEnabled": true
+    },
+    "liveAgentSettings": {
+      "enableLiveAgent": true
+    },
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
+    }
+  }
 }
