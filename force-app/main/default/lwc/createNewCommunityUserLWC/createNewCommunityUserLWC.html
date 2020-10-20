@@ -1,0 +1,185 @@
+<!--https://www.sfdcblogs.com/post/how-to-fetch-inputs-in-lightning-web-components-->
+<template>
+    <lightning-card  title="Create New Community User">
+        <lightning-button label="New" slot="actions"></lightning-button>
+        <div class="slds-p-horizontal_small">
+            <div class="slds-form" role="list">
+                <div class="slds-form__row">
+                  <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked slds-is-editing">
+                      <label class="slds-form-element__label" for="stacked-form-element-id-01">First Name</label>
+                      <div class="slds-form-element__icon">
+                        <button class="slds-button slds-button_icon">
+                          <svg class="slds-button__icon" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
+                          </svg>
+                          <span class="slds-assistive-text">Help</span>
+                        </button>
+                      </div>
+                      <div class="slds-form-element__control">
+                        <input type="text" id="stacked-form-element-id-01" class="slds-input" value="5367" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked slds-is-editing">
+                      <label class="slds-form-element__label" for="stacked-form-element-id-02">Last Name</label>
+                      <div class="slds-form-element__icon">
+                        <button class="slds-button slds-button_icon">
+                          <svg class="slds-button__icon" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
+                          </svg>
+                          <span class="slds-assistive-text">Help</span>
+                        </button>
+                      </div>
+                      <div class="slds-form-element__control">
+                        <input type="text" id="stacked-form-element-id-02" class="slds-input" value="5367" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                      <div class="slds-form-element slds-form-element_stacked slds-is-editing">
+                        <label class="slds-form-element__label" for="stacked-form-element-id-03">Email</label>
+                        <div class="slds-form-element__icon">
+                          <button class="slds-button slds-button_icon">
+                            <svg class="slds-button__icon" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Help</span>
+                          </button>
+                        </div>
+                        <div class="slds-form-element__control">
+                          <input type="email" id="stacked-form-element-id-03" class="slds-input" value="5367" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slds-form__item" role="listitem">
+                      <div class="slds-form-element slds-form-element_stacked slds-is-editing">
+                        <label class="slds-form-element__label" for="stacked-form-element-id-04">Phone</label>
+                        <div class="slds-form-element__icon">
+                          <button class="slds-button slds-button_icon">
+                            <svg class="slds-button__icon" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Help</span>
+                          </button>
+                        </div>
+                        <div class="slds-form-element__control">
+                          <input type="text" id="stacked-form-element-id-04" class="slds-input" value="5367" />
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                      <div class="slds-form-element slds-form-element_stacked slds-is-editing">
+                        <div class="slds-form-element__control">
+                            <lightning-combobox
+                            name="contactType"
+                            label="Contact Type"
+                            value={value}
+                            placeholder="Select Contact Type"
+                            options={options}
+                            required
+                            onchange={handleChange} ></lightning-combobox>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slds-form__item" role="listitem">
+                        <div class="slds-form-element slds-form-element_stacked slds-is-editing">
+                            <div class="slds-form-element__control">
+                                <lightning-combobox
+                                name="contactType"
+                                label="Account"
+                                value={value}
+                                placeholder="Select Account"
+                                options={options}
+                                onchange={handleChange} ></lightning-combobox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-form__row">
+                  <div class="slds-form__item" role="listitem">
+                    <fieldset class="slds-form-element slds-form-element_compound slds-form-element_address slds-is-required slds-is-editing slds-form-element_stacked">
+                      <div class="slds-form-element__control">
+                        <div class="slds-form-element__row">
+                          <div class="slds-size_1-of-1">
+                            <div class="slds-form-element">
+                              <label class="slds-form-element__label" for="stacked-form-element-id-05">Billing Street</label>
+                              <div class="slds-form-element__control">
+                                <textarea id="stacked-form-element-id-05" required="" class="slds-textarea" placeholder="Placeholder Text">525 S. Lexington Ave</textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="slds-form-element__row">
+                          <div class="slds-size_4-of-6">
+                            <div class="slds-form-element">
+                              <label class="slds-form-element__label" for="stacked-form-element-id-06">Billing City</label>
+                              <div class="slds-form-element__control">
+                                <input type="text" id="stacked-form-element-id-06" required="" class="slds-input" value="Burlington" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="slds-size_2-of-6">
+                            <div class="slds-form-element">
+                              <label class="slds-form-element__label" for="stacked-form-element-id-07">Billing State/Province</label>
+                              <div class="slds-form-element__control">
+                                <input type="text" id="stacked-form-element-id-07" required="" class="slds-input" value="NC" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="slds-form-element__row">
+                          <div class="slds-size_4-of-6">
+                            <div class="slds-form-element">
+                              <label class="slds-form-element__label" for="stacked-form-element-id-08">Billing Zip/Postal Code</label>
+                              <div class="slds-form-element__control">
+                                <input type="text" id="stacked-form-element-id-08" required="" class="slds-input" value="27215" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="slds-size_2-of-6">
+                            <div class="slds-form-element">
+                              <label class="slds-form-element__label" for="stacked-form-element-id-09">Billing Country</label>
+                              <div class="slds-form-element__control">
+                                <input type="text" id="stacked-form-element-id-09" required="" class="slds-input" value="USA" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="stacked-form-element-id-09">Select Permission</label>
+                        <div class="slds-form-element__control">
+                            <lightning-tabset variant="vertical">
+                                <lightning-tab label="Item One" icon-name="utility:check">
+                                    One Content !
+                                </lightning-tab>
+                                <lightning-tab label="Item Two">
+                                    Two Content !
+                                </lightning-tab>
+                                <lightning-tab label="Item Three">
+                                    Three Content !
+                                </lightning-tab>
+                            </lightning-tabset>
+                        </div>
+                      </div>
+                    
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div slot="footer">
+            <lightning-button variant="brand" label="Create User" title="Primary action" onclick={handleSave} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </lightning-card>
+
+    
+</template>
