@@ -7,13 +7,7 @@ public with sharing class AccountHierarchyController {
         for(Account item :[SELECT Id, Name, ParentId  FROM Account]){
             System.debug(item.name+'->'+item);
             String pid = item.ParentId ==null? 'ROOT':item.ParentId;
-            //if(accountMap.containsKey(pid)){
-            //accountMap.get(id).items.add(new AccountTreeModel(item.id,item.Name,pid, new List<AccountTreeModel>()));
-            /*}else {
-                */
             accountMap.put(item.id, new AccountTreeModel(item.id,item.Name,pid, new List<AccountTreeModel>()));
-            
-            
         }
         for(String itemKey : accountMap.keySet()){
             AccountTreeModel current = accountMap.get(itemKey);
@@ -26,7 +20,7 @@ public with sharing class AccountHierarchyController {
         return accountMap;
     }
 
-    public class AccountTreeModel{
+    public class AccountTreeModel {
         
         @AuraEnabled
         public String id {get;set;}
@@ -34,6 +28,7 @@ public with sharing class AccountHierarchyController {
         @AuraEnabled
         public String label {get;set;}
 
+        @AuraEnabled
         public String parentId {get; set;}
        
         @AuraEnabled
