@@ -34,7 +34,7 @@ public with sharing class AccountHierarchyControllerTest {
         }
         System.assertEquals(2, tree.get(a.id).items.size());
         System.assertEquals(2, tree.get(b.id).items.size());
-        System.assertEquals(1, tree.get(d.id).items.size());
+        System.assertEquals(2, tree.get(d.id).items.size());
 
     }
 }
