@@ -5,7 +5,6 @@ public with sharing class AccountHierarchyController {
         Map<String,AccountTreeModel> accountMap = new Map<String,AccountTreeModel>();
 
         for(Account item :[SELECT Id, Name, ParentId  FROM Account]){
-            System.debug(item.name+'->'+item);
             String pid = item.ParentId ==null? 'ROOT':item.ParentId;
             accountMap.put(item.id, new AccountTreeModel(item.id,item.Name,pid, new List<AccountTreeModel>()));
         }
