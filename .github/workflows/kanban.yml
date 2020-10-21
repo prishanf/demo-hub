@@ -23,7 +23,7 @@ jobs:
           - name: Check out the source code
             uses: actions/checkout@v1
             with:
-              ref:'dev'
+              ref: 'dev'
           - name: Populate auth file with SFDX_URL secret
             if: steps.check.outputs.isMatch == 'true'
             shell: bash
