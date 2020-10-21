@@ -18,9 +18,12 @@ jobs:
                 fromColumnName: TODO
                 toColumnId: ${{ github.event.project_card.column_id }}
                 toColumnName: IN PROGRESS
+          
+            if: steps.check.outputs.isMatch == 'true'
           - name: Check out the source code
             uses: actions/checkout@v1
-            if: steps.check.outputs.isMatch == 'true'
+            with:
+              ref:'dev'
           - name: Populate auth file with SFDX_URL secret
             if: steps.check.outputs.isMatch == 'true'
             shell: bash
@@ -28,8 +31,12 @@ jobs:
           - name: Authenticate against dev hub
             uses: forcedotcom/salesforcedx-actions@master
             if: steps.check.outputs.isMatch == 'true'
-            with:
-                args: force:auth:sfdxurl:store --sfdxurlfile=./SFDX_URL_STORE.txt --setalias=devhub --setdefaultdevhubusername
+          - name: 'Decrypt file'
+            run: openssl enc -nosalt -aes-256-cbc -d -in keys/server.key.enc -out server.key -base64 -K ${{secrets.DECRYPTION_KEY}} -iv ${{secrets.DECRYPTION_IV}}
+          - name: 'Authorize'
+            run: |
+              echo username value ${{ secrets.USERNAME_STAGING }}
+              sfdx force:auth:jwt:grant --clientid=${{ secrets.CONSUMER_KEY }} --username=${{ secrets.USERNAME }} --jwtkeyfile server.key --setdefaultdevhubusername --setalias=demo-hub
           - name: Create scratch org
             uses: forcedotcom/salesforcedx-actions@master
             if: steps.check.outputs.isMatch == 'true'
