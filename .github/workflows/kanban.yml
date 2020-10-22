@@ -2,7 +2,7 @@ name: Starting a new work item
 
 on:
     project_card:
-        types: [moved]
+        types: [delete]
 
 jobs:
     build:

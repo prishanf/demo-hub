@@ -1,0 +1,30 @@
+name: Starting a new work item
+
+on:
+    project_card:
+        types: [moved]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Check move from "TODO" to "IN PROGRESS"
+            id: check
+            uses: prishanf/salesforcedx-kanban-actions/project_card-check-movement@master
+            with:
+                token: ${{ secrets.GITHUB_TOKEN}}
+                fromColumnId: ${{ github.event.changes.column_id.from }}
+                fromColumnName: TODO
+                toColumnId: ${{ github.event.project_card.column_id }}
+                toColumnName: IN PROGRESS
+          
+            if: steps.check.outputs.isMatch == 'true'
+          - name: Step 1
+            run: echo 'Run Step 1'
+            if: steps.check.outputs.isMatch == 'true'
+          - name: Step 2
+            run: echo 'Run Step 2'
+          - name: Step 3
+            run: echo 'Run Step 3'
+            
