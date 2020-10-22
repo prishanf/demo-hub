@@ -34,8 +34,8 @@ jobs:
           - name: SendGrid
             uses: prishanf/sendgrid-action@master
             env:
-                DISPLAY_USER_JSON: '{ result: {"orgId":"ABC","username":"Prishan","instanceUrl":"www.google.com","loginUrl":"/login"}}'
-                DISPLAY_URL_JSON: '{result: {url:"/abcd"}}'
+                DISPLAY_USER_JSON: '{"result": {"orgId":"ABC","username":"Prishan","instanceUrl":"www.google.com","loginUrl":"/login"}}'
+                DISPLAY_URL_JSON: '{"result": {"url":"/abcd"}}'
                 SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
                 SCRIPT_FILEPATH: scripts/email.js
      
