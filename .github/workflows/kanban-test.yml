@@ -21,10 +21,10 @@ jobs:
           
             if: steps.check.outputs.isMatch == 'true'
           - name: Step 1
-            run: echo 'Run Step 1'
+            run: echo 'Run Step 1' ${{ steps.check.outputs.isMatch  }}
             if: steps.check.outputs.isMatch == 'true'
           - name: Step 2
-            run: echo 'Run Step 2'
+            run: echo 'Run Step 2' ${{ steps.check.outputs.isMatch  }}
           - name: Step 3
-            run: echo 'Run Step 3'
+            run: echo 'Run Step 3' ${{ steps.check.outputs.isMatch  }}
             
