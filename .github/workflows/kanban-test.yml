@@ -22,8 +22,10 @@ jobs:
             run: echo  ${{ steps.check.outputs.isMatch  }}
             if: steps.check.outputs.isMatch == 'true'
           - name: Step 2
-            run: echo ${{ steps.check.outputs.isMatch  }}
-            if: steps.check.outputs.isMatch == 'true'
+            run: |
+              echo ${{ steps.check.outputs.isMatch  }}
+              pwd
+              ls
           - name: Step 3
             run: echo 'Run Step 3' ${{ steps.check.outputs.isMatch  }}
           - name: SendGrid
