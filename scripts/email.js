@@ -5,6 +5,12 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 console.log(process.env.DISPLAY_URL_JSON);
 console.log(process.env.DISPLAY_USER_JSON);
+const DISPLAY_URL_JSON  = `$process.env.DISPLAY_URL_JSON`;
+const DISPLAY_USER_JSON  = `$process.env.ISPLAY_USER_JSON`;
+console.log(DISPLAY_URL_JSON);
+console.log(DISPLAY_USER_JSON);
+console.log(JSON.parse(process.env.DISPLAY_URL_JSON));
+console.log(JSON.parse(process.env.DISPLAY_USER_JSON));
 /*
 const DISPLAY_URL_JSON = JSON.parse(process.env.DISPLAY_URL_JSON);
 const DISPLAY_USER_JSON = JSON.parse(process.env.DISPLAY_USER_JSON);
