@@ -28,6 +28,7 @@ jobs:
               echo ${{ steps.check.outputs.isMatch  }}
               pwd
               ls
+              chmod +x scripts/email.js
           - name: Step 3
             run: echo 'Run Step 3' ${{ steps.check.outputs.isMatch  }}
           - name: SendGrid
