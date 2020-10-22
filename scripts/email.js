@@ -5,6 +5,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const DISPLAY_URL_JSON = JSON.parse(process.env.DISPLAY_URL_JSON);
 const DISPLAY_USER_JSON = JSON.parse(process.env.DISPLAY_USER_JSON);
+const EMAIL_TO = JSON.parse(process.env.EMAIL_TO);
 
 const TEXT = `
 Here's your personal scratch org info.
@@ -15,10 +16,13 @@ Username: ${DISPLAY_USER_JSON.result.username}
 Instance URL: ${DISPLAY_USER_JSON.result.instanceUrl}
 Login URL: ${DISPLAY_USER_JSON.result.loginUrl}
 `;
+console.log('email scrtip');
+console.log(DISPLAY_URL_JSON);
+console.log(DISPLAY_USER_JSON);
 
 const msg = {
-    to: 'nchen.dev@mac.com',
-    from: 'nchen.dev@mac.com',
+    to: EMAIL_TO,
+    from: EMAIL_TO,
     subject: 'Welcome to your new scratch org',
     text: TEXT,
 };
