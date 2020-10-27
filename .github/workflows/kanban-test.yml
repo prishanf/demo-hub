@@ -28,7 +28,7 @@ jobs:
           - name: Create Scratch Org
             uses: forcedotcom/salesforcedx-actions@master
             with:
-              args: sfdx force:org:create -v ${{ secrets.USERNAME }} -s -f config/project-scratch-def.json
+              args: force:org:create -v ${{ secrets.USERNAME }} -s -f config/project-scratch-def.json
           - name: Create user
             uses: forcedotcom/salesforcedx-actions@master
             with:
