@@ -20,7 +20,7 @@ console.log(DISPLAY_USER_JSON_OBJ);
 
 const TEXT = `
 Here's your personal scratch org info.
-You can open your org at ${DISPLAY_URL_JSON.result.url}.
+You can open your org at ${DISPLAY_USER_JSON_OBJ.result.url}.
 Here are some other details of your org.
 Org ID: ${DISPLAY_USER_JSON_OBJ.result.orgId}
 Username: ${DISPLAY_USER_JSON_OBJ.result.username}
