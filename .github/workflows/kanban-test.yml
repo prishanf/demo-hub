@@ -28,27 +28,26 @@ jobs:
           - name: Create Scratch Org
             uses: forcedotcom/salesforcedx-actions@master
             with:
-                args: sfdx force:org:create -v ${{ secrets.USERNAME }} -s -f config/project-scratch-def.json -a
-            continue-on-error: false 
+              args: sfdx force:org:create -v ${{ secrets.USERNAME }} -s -f config/project-scratch-def.json -a
             if: steps.check.outputs.isMatch == 'true'
             - name: Create user
             uses: forcedotcom/salesforcedx-actions@master
             with:
-                args: force:user:create --definitionfile=config/user-def.json --setalias=new-user
+              args: force:user:create --definitionfile=config/user-def.json --setalias=new-user
           - name: Change password
             uses: forcedotcom/salesforcedx-actions@master
             with:
-                args: force:user:password:generate --targetusername=new-user
+              args: force:user:password:generate --targetusername=new-user
           - name: Display user information
             id: display_user
             uses: forcedotcom/salesforcedx-actions@master
             with:
-                args: force:user:display --targetusername=new-user --json
+              args: force:user:display --targetusername=new-user --json
           - name: Display open url
             id: display_url
             uses: forcedotcom/salesforcedx-actions@master
             with:
-                args: force:org:open --urlonly --targetusername=new-user --json
+              args: force:org:open --urlonly --targetusername=new-user --json
           - name: install gmail-send
             run: npm install --save gmail-send
             if: steps.check.outputs.isMatch == 'true'
