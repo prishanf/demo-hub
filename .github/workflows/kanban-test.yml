@@ -43,6 +43,9 @@ jobs:
           - name: install gmail-send
             run: npm install --save gmail-send
             if: steps.check.outputs.isMatch == 'true'
+          - name: Give access to email.js file
+            run: |
+              chmod +x scripts/email.js
           - name: Send Email vi Gmail
             uses: prishanf/sendgrid-action@master
             env:
