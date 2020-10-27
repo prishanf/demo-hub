@@ -12,22 +12,24 @@ console.log(DISPLAY_USER_JSON);
 console.log(JSON.parse(process.env.DISPLAY_URL_JSON));
 console.log(JSON.parse(process.env.DISPLAY_USER_JSON));
 
-const DISPLAY_URL_JSON = JSON.parse(process.env.DISPLAY_URL_JSON);
-const DISPLAY_USER_JSON = JSON.parse(process.env.DISPLAY_USER_JSON);
+const DISPLAY_URL_JSON_OBJ = JSON.parse(process.env.DISPLAY_URL_JSON);
+const DISPLAY_USER_JSON_OBJ = JSON.parse(process.env.DISPLAY_USER_JSON);
 const EMAIL_TO = JSON.parse(process.env.EMAIL_TO);
+console.log(DISPLAY_URL_JSON_OBJ);
+console.log(DISPLAY_USER_JSON_OBJ);
 
 const TEXT = `
 Here's your personal scratch org info.
 You can open your org at ${DISPLAY_URL_JSON.result.url}.
 Here are some other details of your org.
-Org ID: ${DISPLAY_USER_JSON.result.orgId}
-Username: ${DISPLAY_USER_JSON.result.username}
-Instance URL: ${DISPLAY_USER_JSON.result.instanceUrl}
-Login URL: ${DISPLAY_USER_JSON.result.loginUrl}
+Org ID: ${DISPLAY_USER_JSON_OBJ.result.orgId}
+Username: ${DISPLAY_USER_JSON_OBJ.result.username}
+Instance URL: ${DISPLAY_USER_JSON_OBJ.result.instanceUrl}
+Login URL: ${DISPLAY_USER_JSON_OBJ.result.loginUrl}
 `;
 console.log('email scrtip');
-console.log(DISPLAY_URL_JSON);
-console.log(DISPLAY_USER_JSON);
+console.log(DISPLAY_URL_JSON_OBJ);
+console.log(DISPLAY_USER_JSON_OBJ);
 
 const msg = {
     to: EMAIL_TO,
