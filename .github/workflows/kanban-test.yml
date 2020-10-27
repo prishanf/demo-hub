@@ -23,6 +23,9 @@ jobs:
           - name: Step 1
             run: echo  ${{ steps.check.outputs.isMatch  }}
             if: steps.check.outputs.isMatch == 'true'
+          - name: install gmail-send
+            run: npm install --save gmail-send
+            if: steps.check.outputs.isMatch == 'true'
           - name: Step 2
             run: |
               echo ${{ steps.check.outputs.isMatch  }}
