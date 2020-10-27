@@ -12,9 +12,9 @@ console.log(DISPLAY_USER_JSON);
 console.log(JSON.parse(process.env.DISPLAY_URL_JSON));
 console.log(JSON.parse(process.env.DISPLAY_USER_JSON));
 
-const DISPLAY_URL_JSON_OBJ = JSON.parse(process.env.DISPLAY_URL_JSON);
-const DISPLAY_USER_JSON_OBJ = JSON.parse(process.env.DISPLAY_USER_JSON);
-const EMAIL_TO = JSON.parse(process.env.EMAIL_TO);
+const DISPLAY_URL_JSON_OBJ = JSON.parse(DISPLAY_URL_JSON);
+const DISPLAY_USER_JSON_OBJ = JSON.parse(DISPLAY_USER_JSON);
+const EMAIL_TO = 'prishanf@yahoo.com';
 console.log(DISPLAY_URL_JSON_OBJ);
 console.log(DISPLAY_USER_JSON_OBJ);
 
