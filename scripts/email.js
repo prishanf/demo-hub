@@ -20,6 +20,7 @@ if(DISPLAY_USER_JSON_OBJ.result){
     Here are some other details of your org.
     Org ID: ${DISPLAY_USER_JSON_OBJ.result.orgId}
     Username: ${DISPLAY_USER_JSON_OBJ.result.username}
+    Username: ${DISPLAY_USER_JSON_OBJ.result.password}
     Instance URL: ${DISPLAY_USER_JSON_OBJ.result.instanceUrl}
     Login URL: ${DISPLAY_USER_JSON_OBJ.result.loginUrl}
     `;

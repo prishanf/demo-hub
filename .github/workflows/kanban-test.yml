@@ -31,20 +31,22 @@ jobs:
             uses: forcedotcom/salesforcedx-actions@master
             with:
               args: 'force:org:create --definitionfile=config/project-scratch-def.json --setalias=scratch-org --setdefaultusername'
+          - name: Genereate Password
+            uses: forcedotcom/salesforcedx-actions@master
+            with:
+              args: 'force:user:password:generate --targetusername=scratch-org'
           - name: Display user information
             id: display_user
             uses: forcedotcom/salesforcedx-actions@master
             with:
-              args: force:user:display --targetusername=new-user --json
+              args: force:user:display --targetusername=scratch-org --json
           - name: install gmail-send
             run: npm install --save gmail-send
             if: steps.check.outputs.isMatch == 'true'
           - name: Send Email vi Gmail
             uses: prishanf/sendgrid-action@master
             env:
-                DISPLAY_USER_JSON: '{"result": {"orgId":"ABC","username":"Prishan","instanceUrl":"www.google.com","loginUrl":"/login"}}'
-                DISPLAY_URL_JSON: '{"result": {"url":"/abcd"}}'
-                SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+                DISPLAY_USER_JSON: ${{ steps.display_user.outputs.result }}
                 GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
                 EMAIL_TO: ${{ secrets.EMAIL_TO }}
                 GMAIL_FROM: ${{ secrets.GMAIL_FROM }}
