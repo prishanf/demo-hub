@@ -20,33 +20,22 @@ jobs:
                 toColumnName: IN PROGRESS
           - name: Check out the source code
             uses: actions/checkout@v2
-          - name: Authorize Dev Hub
-            uses: sfdx-actions/setup-sfdx@v1
+          - name: 'Populate auth file with SFDX_URL secret'
+            shell: bash
+            run: 'echo ${{ secrets.AUTH_SECRET}} > ./SFDX_URL_STORE.txt'
+          - name: 'Authenticate against dev hub'
+            uses: forcedotcom/salesforcedx-actions@master
             with:
-              sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
-            if: steps.check.outputs.isMatch == 'true'
+              args: 'force:auth:sfdxurl:store --sfdxurlfile=./SFDX_URL_STORE.txt --setalias=devhub --setdefaultdevhubusername'
           - name: Create Scratch Org
             uses: forcedotcom/salesforcedx-actions@master
             with:
-              args: force:org:create -v ${{ secrets.USERNAME }} -s -f config/project-scratch-def.json
-          - name: Create user
-            uses: forcedotcom/salesforcedx-actions@master
-            with:
-              args: force:user:create --definitionfile=config/user-def.json --setalias=new-user
-          - name: Change password
-            uses: forcedotcom/salesforcedx-actions@master
-            with:
-              args: force:user:password:generate --targetusername=new-user
+              args: 'force:org:create --definitionfile=config/project-scratch-def.json --setalias=scratch-org --setdefaultusername'
           - name: Display user information
             id: display_user
             uses: forcedotcom/salesforcedx-actions@master
             with:
               args: force:user:display --targetusername=new-user --json
-          - name: Display open url
-            id: display_url
-            uses: forcedotcom/salesforcedx-actions@master
-            with:
-              args: force:org:open --urlonly --targetusername=new-user --json
           - name: install gmail-send
             run: npm install --save gmail-send
             if: steps.check.outputs.isMatch == 'true'
