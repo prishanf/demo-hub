@@ -21,8 +21,11 @@ jobs:
       run: echo "Hello, I've been triggered by a webhook!"
     - name: Event Name
       run: |
-        echo "Event triggered by $GITHUB_EVENT_NAME"
+        echo "Event triggered by $GITHUB_EVENT_NAME" $GITHUB_EVENT_NAME
         echo "Dispatch type ${{ github.event.action }}"
+        echo "Client Data ${{ github.event.client_payload.unit }}"
+        echo "Client Data ${{ github.event.client_payload.integration }}"
+        
     - name: Goodbye
       if: ${{ github.event.action == 'webhook-one' }}
       run: npx cowsay "Bye!"
