@@ -1,0 +1,18 @@
+.custom-box{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #fff;
+}
+p {
+    font-size: 12px;
+    line-height: 1.2em;
+}
+.numbers {
+    font-size: 1.2em;
+}
+
+.red {
+    color : #FB404B;
+}
+.green{
+    color : #87CB16
+}

@@ -1,0 +1,19 @@
+<template>
+    <lightning-layout multiple-rows>
+        <template for:each={data} for:item="item">
+            <lightning-layout-item key={item.label} size={size} padding="around-small" flexibility="auto">
+                <div class={alignmentClass}>
+                    <div class="numbers">
+                        <p>{item.label}</p>
+                        <template if:true={item.isCurrency}>
+                            <lightning-formatted-number class={item.class} value={item.value} format-style="currency"  currency-display-as="symbol"></lightning-formatted-number>
+                        </template>
+                        <template if:false={item.isCurrency}>
+                            <span class={item.class}>{item.value}</span>
+                        </template>
+                    </div>
+                </div>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

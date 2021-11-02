@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightningCommunity__Default</target>
+      </targets>
+      <targetConfigs>
+        <targetConfig targets="lightning__AppPage,lightning__HomePage,lightning__RecordPage">
+            <property name="alignment" label="Text alignment" description="Define the text alinment for text inside the box" required="false" default="right" datasource="left,center,right"  type="String"/>
+            <property name="gridSize" label="Grid Size" description="Number of columns on one row" required="false" default="6"  datasource="1,2,3,4,6"  type="String"/>
+            <property name="recordId" label="Record ID" description="The id of the current record" type="String" />
+            <property name="fields" label="Enter Display Fields" description="Enter comma seperated list of fields api names" type="String" default="Name"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
